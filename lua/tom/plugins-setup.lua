@@ -112,7 +112,8 @@ return packer.startup(function(use)
 	-- gitsigns
 	use("lewis6991/gitsigns.nvim")
 
-	-- use("mhinz/vim-signify") -- shows git changes line by line
+	-- git blame
+	use("f-person/git-blame.nvim")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
