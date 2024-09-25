@@ -8,11 +8,6 @@ if not cmp_nvim_lsp_status then
 	return
 end
 
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-	return
-end
-
 local keymap = vim.keymap
 
 -- enable keybinds for available lsp server
@@ -31,10 +26,6 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
-
-	if client.name == "tsserver" then
-		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")
-	end
 end
 
 -- used to enable autocompletion
@@ -50,9 +41,25 @@ lspconfig["pyright"].setup({
 	on_attach = on_attach,
 })
 
-typescript.setup({
-	server = {
-		capabilities = capabilities,
-		on_attach = on_attach,
+lspconfig["lua_ls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
 	},
+})
+
+lspconfig["sqlls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["harper_ls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "markdown", "typescript" },
 })
