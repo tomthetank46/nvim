@@ -30,6 +30,12 @@ keymap.set("n", "<leader>bp", ":bp<CR>") -- previous buffer
 keymap.set("n", "<leader>bd<CR>", ":bd<CR>") -- previous buffer
 keymap.set("n", "<leader>bd", ":bd ") -- previous buffer
 
+keymap.set("n", "M", "m") -- set mark
+keymap.set("n", "m", "`") -- go to mark
+
+-- Duplicate a line and comment out the first line
+keymap.set("n", "yc", "yygccp")
+
 -- terminal
 keymap.set("t", "jj", "<C-\\><C-N>")
 

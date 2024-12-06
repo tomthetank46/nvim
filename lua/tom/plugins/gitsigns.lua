@@ -29,7 +29,7 @@ gitsigns.setup({
 		ignore_whitespace = false,
 		virt_text_priority = 100,
 	},
-	current_line_blame_formatter = "<author>, <committer_time:%R> - <summary>",
+	current_line_blame_formatter = "<abbrev_sha> <author>, <committer_time:%R> - <summary>",
 	update_debounce = 0,
 
 	on_attach = function(bufnr)
