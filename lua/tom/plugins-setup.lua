@@ -93,10 +93,6 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/typescript.nvim")
 	use("onsails/lspkind.nvim")
 
-	-- formatting & linting
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("jayp0521/mason-null-ls.nvim")
-
 	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
