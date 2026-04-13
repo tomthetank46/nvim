@@ -108,6 +108,10 @@ return packer.startup(function(use)
 	-- gitsigns
 	use("lewis6991/gitsigns.nvim")
 
+    -- vim sneak 
+    use("justinmk/vim-sneak")
+    vim.cmd([[let g:sneak#label = 1]])
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
