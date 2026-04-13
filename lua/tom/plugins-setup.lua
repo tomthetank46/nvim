@@ -70,7 +70,7 @@ return packer.startup(function(use)
 	-- fuzzy finding
 	use("BurntSushi/ripgrep")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency
-	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+	use({ "nvim-telescope/telescope.nvim", version = "*" })
 
 	-- autocompletion
 	use("hrsh7th/nvim-cmp")
