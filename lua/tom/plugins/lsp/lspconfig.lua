@@ -1,7 +1,3 @@
-local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status then
-	return
-end
 
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
@@ -31,17 +27,15 @@ end
 -- used to enable autocompletion
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig["html"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+vim.lsp.enable('html')
 
-lspconfig["pyright"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
+vim.lsp.config('pyright', {
+  capabilities = capabilities,
+  on_attach = on_attach,
 })
+vim.lsp.enable('pyright')
 
-lspconfig["lua_ls"].setup({
+vim.lsp.enable('lua_ls', {
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
@@ -53,12 +47,12 @@ lspconfig["lua_ls"].setup({
 	},
 })
 
-lspconfig["sqlls"].setup({
+vim.lsp.enable('sqlls', {
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
-lspconfig["harper_ls"].setup({
+vim.lsp.enable('harper_ls', {
 	capabilities = capabilities,
 	on_attach = on_attach,
 	filetypes = { "markdown", "typescript" },
