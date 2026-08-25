@@ -53,3 +53,13 @@ opt.scrolloff = 5
 -- From iggredible/Learn-Vim
 opt.compatible = false
 opt.hidden = true
+
+-- Reload Files
+opt.autoread = true 
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+    callback = function()
+        if vim.fn.getcmdwintype() == '' then
+            vim.cmd('checktime')
+        end
+    end,
+})

@@ -56,7 +56,7 @@ return packer.startup(function(use)
 	use("vim-scripts/ReplaceWithRegister")
 
 	-- commenting with gc
-	use("numToStr/Comment.nvim")
+	use("nvim-mini/mini.nvim")
 
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
@@ -70,6 +70,7 @@ return packer.startup(function(use)
 	-- fuzzy finding
 	use("BurntSushi/ripgrep")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency
+    use({ "nvim-telescope/telescope-live-grep-args.nvim" })
 	use({ "nvim-telescope/telescope.nvim", version = "*" })
 
 	-- autocompletion
@@ -90,7 +91,6 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/cmp-nvim-lsp")
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
-	use("jose-elias-alvarez/typescript.nvim")
 	use("onsails/lspkind.nvim")
 
 	-- treesitter
@@ -111,6 +111,17 @@ return packer.startup(function(use)
     -- vim sneak 
     use("justinmk/vim-sneak")
     vim.cmd([[let g:sneak#label = 1]])
+
+    use({
+        "hat0uma/csvview.nvim",
+        config = function()
+            require("csvview").setup()
+            vim.api.nvim_create_autocmd("BufReadPost", {
+                pattern = { "*.csv", "*.tsv" },
+                callback = function() vim.cmd("CsvViewEnable") end,
+            })
+        end,
+    })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

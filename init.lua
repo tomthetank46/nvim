@@ -3,7 +3,6 @@ require("tom.core.options")
 require("tom.core.keymaps")
 require("tom.core.colorscheme")
 
-require("tom.plugins.comment")
 require("tom.plugins.nvim-tree")
 require("tom.plugins.lualine")
 require("tom.plugins.telescope")
